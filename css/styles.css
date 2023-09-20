@@ -5,6 +5,7 @@
   body {
     height: 100vh;
     margin: 0;
+    
  
   }
   h1{
@@ -16,8 +17,6 @@ font-size: 80px;
 text-decoration: underline;
 
   }
-  
-  
   .grid-wrapper {
     height: 100vh;
     display: flex;
@@ -49,21 +48,41 @@ text-decoration: underline;
     background-color: green;
     border-color: black;
     border-radius: 50%;
+    animation: pulse 0.5s infinite alternate;
   }
   .grid div.food {
    width: 10px;
    height: 10px;
-   background-color: rgb(234, 14, 14)
+   background-image: url('../SnakeGame\ Images/junkfood.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+   cursor: pointer;
+   animation: pulse 0.5s infinite alternate;
+   border-radius: 50px ;
   }
-  button.startbtn{
-    border: none;
-    outline: none;
-    cursor: pointer;
+  button {
+    background-color: #3498db; /* Button background color */
+    color: #fff; /* Text color */
+    font-size: 18px;
     padding: 10px 20px;
+    border: none;
     border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 20px;
     transition: background-color 0.3s ease;
 
   }
+
+   button {
+    background-color: #2980b9; /* Button background color on hover */
+  }
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+
+  
