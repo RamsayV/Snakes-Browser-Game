@@ -21,7 +21,7 @@ function init() {
     playAgain.innerText = "Play Again?"
     let timer = null
     let foodLocation = Math.floor(Math.random() * cellCount)
-
+    let speed = 400
 
 
     playAgain.addEventListener('click', () => {
@@ -63,7 +63,7 @@ function init() {
     }
 
 
-    //? Game Over Function
+   
     //? ADD Snake 
     function addSnake() {
         const [snakeHead, ...snakeBody] = snakeArr
@@ -86,7 +86,7 @@ function init() {
     function generateFood() {
         foodLocation = Math.floor(Math.random() * cellCount)
         cells[foodLocation].classList.add('food')
-        if(cells[foodLocation].classList.contains('snake', 'snakeHead')){
+        if(cells[foodLocation].classList.contains('snake')){
             removeFood()
             foodLocation = Math.floor(Math.random() * cellCount)
             cells[foodLocation].classList.add('food')
@@ -97,6 +97,8 @@ function init() {
     function removeFood() {
         cells[foodLocation].classList.remove('food')
     }
+
+    
 
     //?  Handle MOvement
     function handleMovement(event) {
@@ -153,19 +155,29 @@ function init() {
             } else {
                 removeFood()
                 generateFood()
+                speedChange()
                 score += 10
                 scoreboard.innerText = (`Score: ${score}`)
             }
             snakeArr.unshift(snakeArr[0] + snakeDirection)
             addSnake()
 
-        }, 1000)
+        }, speed)
     }
     foodScore()
     createGrid()
     generateFood()
 
-
+    function speedChange() {
+        if(speed <= 20) {
+            speed += 0
+        } else {
+            speed -= 50
+            clearInterval(timer)
+            foodScore()
+            console.log(speed)
+        }
+    }
 
     //! Events
     document.addEventListener('keyup', handleMovement)

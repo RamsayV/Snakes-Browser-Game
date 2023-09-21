@@ -5,6 +5,8 @@
   body {
     height: 100vh;
     margin: 0;
+    background-color: #8a2be2; /* Neon Purple color */
+  padding: 0;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -17,10 +19,13 @@
   h1{
 display: flex;
 justify-content: center;
-font-family: 'Skranji', cursive;
-margin: 40px 0 0 0;
-font-size: 80px;
-text-decoration: underline;
+font-size: 76px;
+color: #00FF00; /* Neon green text color */
+text-transform: uppercase;
+letter-spacing: 2px;
+font-weight: bold;
+text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00; /* Neon glow effect */
+animation: neonGlow 1s ease-in-out infinite alternate; /
 
   }
   .grid-wrapper {
@@ -55,18 +60,16 @@ text-decoration: underline;
   .grid div.snake {
     width: 10px;
     height: 10px;
-    background-color: green;
+    background-color: #00FF00;
     border-color: black;
-    border-radius: 50%;
-    animation: pulse 0.5s infinite alternate;
+    
   }
   .grid div.snakeHead {
     width: 10px;
     height: 10px;
-    background-color: rgb(128, 0, 128);
+    background-color: #FF00FF;
     border-color: black;
-    border-radius: 50%;
-    animation: pulse 0.5s infinite alternate;
+    
 
 
   }
@@ -81,21 +84,16 @@ text-decoration: underline;
    border-radius: 50px ;
   }
   button {
-    background-color: #3498db; /* Button background color */
-    color: #fff; /* Text color */
-    font-size: 18px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    background-color: #FF00FF; /* Neon purple for buttons */
+  color: #000; /* Black text on buttons */
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
-  }
-
-   button {
-    background-color: #2980b9; /* Button background color on hover */
-  }
+   
 @keyframes pulse {
     0% {
       transform: scale(1);
@@ -106,7 +104,7 @@ text-decoration: underline;
   }
 
   #ScoreBoard {
-    background-color: #333;
+    background-color: #13ea21;
     padding: 10px;
     border-radius: 5px;
     width: 200px;
@@ -117,3 +115,12 @@ text-decoration: underline;
     font-size: 24px;
 
    }
+
+   @keyframes neonGlow {
+    0% {
+      text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00;
+    }
+    100% {
+      text-shadow: 0 0 20px #00FF00, 0 0 30px #00FF00, 0 0 40px #00FF00;
+    }
+  }
