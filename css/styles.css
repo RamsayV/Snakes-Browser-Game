@@ -5,8 +5,14 @@
   body {
     height: 100vh;
     margin: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+
     
- 
   }
   h1{
 display: flex;
@@ -18,25 +24,29 @@ text-decoration: underline;
 
   }
   .grid-wrapper {
-    height: 100vh;
+    height: 70vmin;
+    width: 70vmin;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
   }
   
   .grid {
     align-items: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+    box-shadow:rgb(157, 4, 134);
     display: flex;
     flex-wrap: wrap;
     height: 100%;
     justify-content: center;
-    height: 600px;
-    width: 600px;
+    width: 100%;
+    background-image: url('../SnakeGame\ Images/sbackground.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+
   }
   
   .grid div {
-    border: 1px solid rgb(236, 49, 49);
     flex-grow: 1;
     height: 10%;
     width: 10%;
@@ -49,6 +59,16 @@ text-decoration: underline;
     border-color: black;
     border-radius: 50%;
     animation: pulse 0.5s infinite alternate;
+  }
+  .grid div.snakeHead {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(128, 0, 128);
+    border-color: black;
+    border-radius: 50%;
+    animation: pulse 0.5s infinite alternate;
+
+
   }
   .grid div.food {
    width: 10px;
@@ -85,4 +105,15 @@ text-decoration: underline;
     }
   }
 
-  
+  #ScoreBoard {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 24px;
+
+   }
