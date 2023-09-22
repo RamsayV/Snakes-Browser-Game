@@ -5,7 +5,7 @@
   body {
     height: 100vh;
     margin: 0;
-    background-color: #8a2be2; /* Neon Purple color */
+    background-color:  #2c003e; /* Neon Purple color */
   padding: 0;
     cursor: pointer;
     display: flex;
@@ -55,11 +55,13 @@ animation: neonGlow 1s ease-in-out infinite alternate; /
     flex-grow: 1;
     height: 10%;
     width: 10%;
+    
   }
   
   .grid div.snake {
     width: 10px;
     height: 10px;
+    border-radius: 90%;
     background-color: #00FF00;
     border-color: black;
     
@@ -67,7 +69,8 @@ animation: neonGlow 1s ease-in-out infinite alternate; /
   .grid div.snakeHead {
     width: 10px;
     height: 10px;
-    background-color: #FF00FF;
+    border-radius: 90%;
+    background-color: #00FF00;
     border-color: black;
     
 
@@ -84,8 +87,9 @@ animation: neonGlow 1s ease-in-out infinite alternate; /
    border-radius: 50px ;
   }
   button {
-    background-color: #FF00FF; /* Neon purple for buttons */
+    background-color: #8a2be2; /* Neon purple for buttons */
   color: #000; /* Black text on buttons */
+  border-radius: 5px;
   border: none;
   padding: 10px 20px;
   font-size: 18px;

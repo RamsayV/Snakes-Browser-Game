@@ -18,10 +18,12 @@ function init() {
     let score = 0
     let scoreboard = document.getElementById('ScoreBoard')
     const playAgain = document.createElement('button')
+    const deadAudio = new Audio('./Snake-Browser-Game/audio/pow.mp3')
     playAgain.innerText = "Play Again?"
     let timer = null
     let foodLocation = Math.floor(Math.random() * cellCount)
-    let speed = 400
+    let speed = 350
+    scoreboard.innerText = (`Score: ${score}`)
 
 
     playAgain.addEventListener('click', () => {
@@ -44,7 +46,7 @@ function init() {
             const cell = document.createElement('div')
 
             // add index to div element
-            
+
 
             //add index as attribute
             cell.dataset.index = i
@@ -63,7 +65,7 @@ function init() {
     }
 
 
-   
+
     //? ADD Snake 
     function addSnake() {
         const [snakeHead, ...snakeBody] = snakeArr
@@ -85,20 +87,17 @@ function init() {
 
     function generateFood() {
         foodLocation = Math.floor(Math.random() * cellCount)
-        cells[foodLocation].classList.add('food')
-        if(cells[foodLocation].classList.contains('snake')){
-            removeFood()
+        while (snakeArr.includes(foodLocation)) {
             foodLocation = Math.floor(Math.random() * cellCount)
-            cells[foodLocation].classList.add('food')
-
+        }
+        cells[foodLocation].classList.add('food')
     }
-}
 
     function removeFood() {
         cells[foodLocation].classList.remove('food')
     }
 
-    
+
 
     //?  Handle MOvement
     function handleMovement(event) {
@@ -123,7 +122,7 @@ function init() {
         addSnake()
     }
 
-    function foodScore() { 
+    function foodScore() {
         timer = setInterval(() => {
             removeSnake()
             const currentX = snakeArr[0] % width
@@ -131,10 +130,10 @@ function init() {
             console.log(snakeArr);
             console.log(currentX, currentY);
             let snakeCollision = false
-            for(let i = 1; i < snakeArr.length; i++){
-                if((snakeArr[0] + snakeDirection) === snakeArr[i]){
+            for (let i = 1; i < snakeArr.length; i++) {
+                if ((snakeArr[0] + snakeDirection) === snakeArr[i]) {
                     snakeCollision = true
-                    
+
                 }
 
             }
@@ -143,11 +142,14 @@ function init() {
                 currentX === 9 && snakeDirection === 1 ||
                 currentX === 0 && snakeDirection === -1 ||
                 currentY === 9 && snakeDirection === 10 ||
-                currentY === 0 && snakeDirection === -10 
+                currentY === 0 && snakeDirection === -10
             ) {
 
                 clearInterval(timer)
-                grid.appendChild(playAgain)
+                scoreboard.appendChild(playAgain)
+                removeSnake()
+                deadAudio.play()
+                console.log(deadAudio);
                 return
             }
             if (!cells[snakeArr[0] + snakeDirection].classList.contains('food')) {
@@ -158,6 +160,7 @@ function init() {
                 speedChange()
                 score += 10
                 scoreboard.innerText = (`Score: ${score}`)
+
             }
             snakeArr.unshift(snakeArr[0] + snakeDirection)
             addSnake()
@@ -169,10 +172,10 @@ function init() {
     generateFood()
 
     function speedChange() {
-        if(speed <= 20) {
+        if (speed <= 20) {
             speed += 0
         } else {
-            speed -= 50
+            speed -= 20
             clearInterval(timer)
             foodScore()
             console.log(speed)
